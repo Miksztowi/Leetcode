@@ -51,7 +51,7 @@ class Solution(object):
         result = 0
         while x:
             result = result * 10 + x % 10
-            x /= 10
+            x /= 10   # Here isn't suitable for python3.x, should use //=.
         return result if result <= 0x7fffffff else 0  # Handle overflow.
 
     def reverse2(self, x):
@@ -72,8 +72,8 @@ class Solution(object):
         :rtype: int
         """
         s = cmp(x, 0)
-        r = int(`s * x`[::-1])
-        return s * r * (r < 2 ** 31)
+        r = int(`s * x`[::-1])  # I still don't know that '`' means what.
+        return s * r * (r < 2 ** 31)  # True is 1, and flase is 0.
 
 
 
