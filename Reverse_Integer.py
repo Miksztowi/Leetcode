@@ -65,15 +65,15 @@ class Solution(object):
             x = int(str(x)[::-1])
         x = 0 if abs(x) > 0x7FFFFFFF else x
         return x
-
-    def reverse3(self, x):
-        """
-        :type x: int
-        :rtype: int
-        """
-        s = cmp(x, 0)
-        r = int(`s * x`[::-1])  # I still don't know that '`' means what.
-        return s * r * (r < 2 ** 31)  # True is 1, and flase is 0.
+    #
+    # def reverse3(self, x):
+    #     """
+    #     :type x: int
+    #     :rtype: int
+    #     """
+    #     s = cmp(x, 0)
+    #     r = int(`s * x`[::-1])  # I still don't know that '`' means what.
+    #     return s * r * (r < 2 ** 31)  # True is 1, and flase is 0.
 
 
 
