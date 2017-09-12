@@ -1,7 +1,8 @@
 # -*- encoding:utf-8 -*-
 # __author__=='Gan'
 
-# Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.
+# Given a non-negative integer, you could swap two digits ####at most once #### to get the maximum valued number.
+#  Return the maximum valued number you could get.
 #
 # Example 1:
 # Input: 2736
@@ -33,6 +34,7 @@ class Solution(object):
 # 111 / 111 test cases passed.
 # Status: Accepted
 # Runtime: 45 ms
+# Your runtime beats 15.32 % of python submissions.
 
 
 # Here is the fast solution in Leetcode.
@@ -61,6 +63,8 @@ class Solution(object):
 #                     return int(''.join(numLst))
 #
 #         return num
+
+
 if __name__ == '__main__':
     print(Solution().maximumSwap(7236))
 
