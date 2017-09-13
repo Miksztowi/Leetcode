@@ -21,17 +21,39 @@ class Solution(object):
         else:
             b = '0' * (len(a) - len(b)) + b
         l_a, l_b = list(a)[::-1], list(b)[::-1]
-        dummy = []
+        result, carry, val = '', 0, 0
         for i in range(max_length):
-            if l_a[i] != l_b[i]:
-                dummy[i] = max(int(l_a[i]), int(l_b[i]))
-            elif l_b[i] == 0:
-                dummy[i] = '0'
-            else:
-                dummy[i] = '0'
-                dummy[i+1] = '1'
-
-        return ''.join(dummy)
+            val = carry
+            val += (int(l_a[i]) + int(l_b[i]))
+            carry, val = val//2, val % 2
+            result += str(val)
+        if carry:
+            result += str(carry)
+        return result[::-1]
 
 if __name__ == '__main__':
     print(Solution().addBinary('11','1'))
+
+
+# 294 / 294 test cases passed.
+# Status: Accepted
+# Runtime: 65 ms
+# Your runtime beats 18.50 % of python submissions.
+
+
+
+# Here is the geek solution!!!
+class Solution(object):
+    def addBinary(self, a, b):
+        """
+        :type a: str
+        :type b: str
+        :rtype: str
+        """
+
+        x = int(a, 2)
+        y = int(b, 2)
+
+        t = bin(x + y)
+        result = str(t)
+        return result[2:]
