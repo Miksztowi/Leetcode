@@ -60,30 +60,31 @@ if __name__ == '__main__':
 
 # Python solution 1
 # Sort and group by group identifier, then sort each group normally.
-# def groupAnagrams(self, strs):
-#     return [sorted(g) for _, g in itertools.groupby(sorted(strs, key=sorted), sorted)]
+import itertools
+def groupAnagrams(self, strs):
+    return [sorted(g) for _, g in itertools.groupby(sorted(strs, key=sorted), sorted)]
 # Or "breaking it down" to maybe make it more readable for beginners and
 # because I just noticed that in Firefox it violates my self-imposed "no scrollbars" rule
 # (I usually use Chrome and didn't think it differed):
-# def groupAnagrams(self, strs):
-#     groups = itertools.groupby(sorted(strs, key=sorted), sorted)
-#     return [sorted(members) for _, members in groups]
+def groupAnagrams(self, strs):
+    groups = itertools.groupby(sorted(strs, key=sorted), sorted)
+    return [sorted(members) for _, members in groups]
 
 
 # Python solution 2
 # Using defaultdict to collect the groups.
-#
-# def groupAnagrams(self, strs):
-#     groups = collections.defaultdict(list)
-#     for s in strs:
-#         groups[tuple(sorted(s))].append(s)
-#     return map(sorted, groups.values())
+import collections
+def groupAnagrams(self, strs):
+    groups = collections.defaultdict(list)
+    for s in strs:
+        groups[tuple(sorted(s))].append(s)
+    return map(sorted, groups.values())
 
 
 # Python solution 3
-# def anagrams(self, strs):
-#     count = collections.Counter([tuple(sorted(s)) for s in strs])
-#     return filter(lambda x: count[tuple(sorted(x))]>1, strs)
+def anagrams(self, strs):
+    count = collections.Counter([tuple(sorted(s)) for s in strs])
+    return filter(lambda x: count[tuple(sorted(x))]>1, strs)
 # collections.Counter creates a counter object. A counter object is like a specific kind of dictionary
     # where it is build for counting (objects that hashes to same value)
 # tuple(sorted(s)) is used here so that anagrams will be hashed to the same value.
@@ -93,37 +94,38 @@ if __name__ == '__main__':
 
 
 # Python solution 4
-# def anagrams(self, strs):
-#     dic = defaultdict(list)
-#     map(lambda item: dic[''.join(sorted(item))].append(item), strs)
-#     return [x for key in dic.keys() for x in dic[key] if len(dic[key]) > 1]
+def anagrams(self, strs):
+    dic = defaultdict(list)
+    map(lambda item: dic[''.join(sorted(item))].append(item), strs)
+    return [x for key in dic.keys() for x in dic[key] if len(dic[key]) > 1]
 # Equivalent to:
-#
-# def anagrams(self, strs):
-#     dic = defaultdict(list)
-#     for item in strs:
-#         after = ''.join(sorted(item))
-#         dic[after].append(item)
-#     ans = []
-#     for item in dic:
-#         values = dic[item]
-#         if len(values) > 1:
-#             ans.extend(values)
-#     return ans
+from collections import defaultdict
+def anagrams(self, strs):
+    dic = defaultdict(list)
+    for item in strs:
+        after = ''.join(sorted(item))
+        dic[after].append(item)
+    ans = []
+    for item in dic:
+        values = dic[item]
+        if len(values) > 1:
+            ans.extend(values)
+    return ans
+
 
 # Python solution 5
     # And this is the fastest solution in Leetcode. runtime: 188ms.
-# class Solution(object):
-#     def groupAnagrams(self, strs):
-#         """
-#         :type strs: List[str]
-#         :rtype: List[List[str]]
-#         """
-#         stats = {}
-#         for str in strs:
-#             ordered = ''.join(sorted(str))
-#             if ordered in stats:
-#                 stats[ordered].append(str)
-#             else:
-#                 stats[ordered] = [str]
-#         return list(stats.values())
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        stats = {}
+        for str in strs:
+            ordered = ''.join(sorted(str))
+            if ordered in stats:
+                stats[ordered].append(str)
+            else:
+                stats[ordered] = [str]
+        return list(stats.values())   # Use list() or will get dict_values(values).
