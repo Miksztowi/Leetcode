@@ -55,10 +55,15 @@ class Solution(object):
         return res
 
 
-
 if __name__ == '__main__':
     # print(Solution().merge((Interval(1,3), Interval(2, 6), Interval(8, 10), Interval(15, 18))))
     print(Solution().merge([Interval(1,4), Interval(5, 6), Interval(8, 10), Interval(15, 18)]))
+
+
+# 169 / 169 test cases passed.
+# Status: Accepted
+# Runtime: 69 ms
+# Your runtime beats 95.85 % of python submissions.
 
 
 # Just go through the intervals sorted by start coordinate and either combine the current interval
