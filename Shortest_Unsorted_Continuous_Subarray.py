@@ -59,6 +59,11 @@ class Solution(object):
 # Status: Accepted
 # Runtime: 156 ms
 # Your runtime beats 8.92 % of python submissions.
+# 1.nums[0, i - 1] and nums[j + 1, n - 1] are both sorted.
+# 2.nums[i] != nums_sorted[i] and nums[j] != nums_sorted[j].
+# 3.nums[i - 1] <= min and max <= nums[j + 1],
+# where min and max are the minimum and maximum values of subarray nums[i, j].
+# https://discuss.leetcode.com/topic/93391/ideas-behind-the-o-n-two-pass-and-one-pass-solutions
 class Solution(object):
     def findUnsortedSubarray(self, nums):
         """
@@ -82,4 +87,5 @@ class Solution(object):
 
 if __name__ == '__main__':
     print(Solution().findUnsortedSubarray([2, 6, 4, 8, 10, 9, 15]))
+    print(Solution().findUnsortedSubarray([4, 6, 8, 10, 2]))
     print(Solution().findUnsortedSubarray([1,2,3,4]))
