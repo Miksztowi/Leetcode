@@ -64,6 +64,10 @@ class Solution(object):
 # 3.nums[i - 1] <= min and max <= nums[j + 1],
 # where min and max are the minimum and maximum values of subarray nums[i, j].
 # https://discuss.leetcode.com/topic/93391/ideas-behind-the-o-n-two-pass-and-one-pass-solutions
+# With these models in place, we can show that if indices i and j satisfy the following conditions,
+# then nums[i, j] will be the shortest subarray we are looking for:
+# i is the smallest index such that nums[i] != min[i];
+# j is the largest index such that nums[j] != max[j]
 class Solution(object):
     def findUnsortedSubarray(self, nums):
         """
