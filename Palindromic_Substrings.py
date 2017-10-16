@@ -57,9 +57,9 @@ class Solution(object):
                 dummy_list[i] = min(max_length - i, dummy_list[2 * center - i])
             while dummy_s[i - dummy_list[i] - 1] == dummy_s[i + dummy_list[i] + 1]:
                 dummy_list[i] += 1
-            # if i - dummy_list[i] > max_length:
-            center = i
-            max_length = i + dummy_list[i]
+            if i + dummy_list[i] > max_length:
+                center = i
+                max_length = i + dummy_list[i]
 
         return sum((v+1)//2 for v in dummy_list)
 
