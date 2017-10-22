@@ -7,6 +7,11 @@
 # However, you may not engage in multiple transactions at the same time
 # (ie, you must sell the stock before you buy again).
 
+
+# 198 / 198 test cases passed.
+# Status: Accepted
+# Runtime: 42 ms
+# Your runtime beats 52.33 % of python submissions.
 class Solution(object):
     def maxProfit(self, prices):
         """
@@ -25,3 +30,5 @@ class Solution(object):
 if __name__ == '__main__':
     print(Solution().maxProfit([1, 3, 2, 8, 4, 9]))
     print(Solution().maxProfit([1, 3, 7, 5, 10, 3]))
+
+
