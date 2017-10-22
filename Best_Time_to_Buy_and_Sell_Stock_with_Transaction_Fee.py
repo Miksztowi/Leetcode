@@ -23,8 +23,8 @@
 # 0 <= fee < 50000.
 
 
-# DP formula:  sold = max(sold, bought + cur_price - fee) if sell stock is the best choice or continue holding the stock
-#              bought = max(bought, sold - cur_price)  Buy the new stock if after that the money still more than begin.
+# DP formula: sold = max(sold, bought + cur_price - fee) if sell stock is the best choice or continue holding the stock.
+#             bought = max(bought, sold - cur_price)  Buy the new stock if after that the money still more than begin.
 # Time complexity: O(n)
 class Solution(object):
     def maxProfit(self, prices, fee):
@@ -42,9 +42,8 @@ class Solution(object):
         return sold if sold > 0 else 0
 
 
-
 if __name__ == '__main__':
-    # print(Solution().maxProfit([1, 3, 2, 8, 4, 9], 2))
+    print(Solution().maxProfit([1, 3, 2, 8, 4, 9], 2))
     print(Solution().maxProfit([1, 3, 7, 5, 10, 3], 3))
 
 # 44 / 44 test cases passed.
