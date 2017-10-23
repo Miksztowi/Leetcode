@@ -60,6 +60,9 @@ class Solution(object):
             x2 ^= x1 & num
             x1 ^= num
             mask = ~(x1 & x2)
+            # If x1=1 and x2=1, then mask = -2.
+            # And -2 & 1 = 0.So mask can reset the counter when count equals k.
+            print(x1, x2, mask)
             x1 &= mask
             x2 &= mask
 
@@ -67,7 +70,7 @@ class Solution(object):
 
 if __name__ == '__main__':
     print(Solution().singleNumber([1, 1, 1, 2, 3, 2, 2]))
-    print(Solution().singleNumber([1, 1, 1, 2, 2, 2, 3]))
+    # print(Solution().singleNumber([1, 1, 1, 2, 2, 2, 3]))
 
 
 # https://discuss.leetcode.com/topic/11877/detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers
