@@ -14,6 +14,11 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
+
+# 202 / 202 test cases passed.
+# Status: Accepted
+# Runtime: 266 ms
+# Your runtime beats 48.18 % of python submissions.
 class Solution(object):
     def buildTree(self, preorder, inorder):
         """
@@ -30,6 +35,10 @@ class Solution(object):
             return root
 
 
+# 202 / 202 test cases passed.
+# Status: Accepted
+# Runtime: 62 ms
+# Your runtime beats 95.01 % of python submissions.
 class Solution(object):
     def buildTree(self, preorder, inorder):
         """
@@ -55,7 +64,6 @@ class Solution(object):
                     temp_node.right = TreeNode(preorder[node_index])
                     nodes_stack.append(temp_node.right)
                     node_index += 1
-
         return root
 
 
