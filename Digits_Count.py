@@ -11,8 +11,6 @@
 # digits_dict[int(str_num[0])] += int(str_num[1:] if num_length > 1 else 0) + 1
 
 from datetime import datetime
-
-
 class Solution(object):
     def digitCount(self, num):
         start = datetime.now()
@@ -23,7 +21,7 @@ class Solution(object):
 
             if num_length - 1 > 0:
                 section_count = int(str_num[0]) * (num_length - 1) * (10 ** (num_length - 2))
-
+                print(section_count)
                 for i in range(10):
                     digits_dict[i] += section_count
 
@@ -39,13 +37,45 @@ class Solution(object):
             num = num % (10 ** (num_length - 1))
 
 
+# Another Problem:  Count the number of k's between 0 and n. k can be 0 - 9.
+# Solution:
+# If current-bit smaller than k, current count will be added higher-bit multiply the current-bit.
+# If current-bit bigger than k, current count will be added higher-bit plus 1 then multiply the current-bit.
+# If current-bit equal the k, current count will be added higher-bit multiply the current-bit
+# and add the lower-bit plus 1.
+class Solution(object):
+    def digitCount(self, num, k):
+        """
+        :type num: int
+        :type k: int
+        :rtype: int
+        """
+        count = 0
+        base = 1
+        while num // base:
+            higher_bit = num // (base * 10)
+            current_bit = num % (base * 10) // base
+            lower_bit = num % base
+
+            if current_bit < k:
+                count += higher_bit * base
+            elif current_bit > k:
+                count += (higher_bit + 1) * base
+            else:
+                count += higher_bit * base + lower_bit + 1
+            base *= 10
+            print(count)
+
+        return count
+
+
 if __name__ == '__main__':
-    num = 987654
-    print('num: {}\n'.format(num))
-    print(Solution().digitCount(num))
-    num = 123456
-    print('num: {}\n'.format(num))
-    print(Solution().digitCount(num))
+    # num = 987654
+    # print('num: {}\n'.format(num))
+    # print(Solution().digitCount(num))
+    num = 5678
+    print('num: {}'.format(num))
+    print(Solution().digitCount(num, 7))
 
 
 
