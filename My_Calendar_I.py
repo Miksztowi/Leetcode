@@ -22,6 +22,9 @@
 # The third event can be booked, as the first event takes every time less than 20, but not including 20.
 
 # Leetcode Weekly Contest 59.
+# 108 / 108 test cases passed.
+# Status: Accepted
+# Runtime: 1059 ms
 class MyCalendar(object):
     def __init__(self):
         self.calendar = []
@@ -45,7 +48,7 @@ class MyCalendar(object):
         # obj = MyCalendar()
         # param_1 = obj.book(start,end)
 
-# Binary Search.
+# Binary Search
 # 108 / 108 test cases passed.
 # Status: Accepted
 # Runtime: 256 ms
@@ -66,17 +69,13 @@ class MyCalendar(object):
             self._start_sorted += start,
             return True
         floor_index = bisect.bisect_left(self._start_sorted, start)
-        if floor_index:
-            if self.calendar[floor_index - 1][1] > start:
+        if floor_index and self.calendar[floor_index - 1][1] > start:
                 return False
 
         ceiling_index = bisect.bisect_right(self._start_sorted, start)
-
-        if self.calendar[ceiling_index - 1][0] == start:
-            if self.calendar[ceiling_index - 1][0] < end:
+        if self.calendar[ceiling_index - 1][0] == start and self.calendar[ceiling_index - 1][0] < end:
                 return False
-        elif ceiling_index != len(self.calendar):
-            if self.calendar[ceiling_index][0] < end:
+        elif ceiling_index != len(self.calendar) and self.calendar[ceiling_index][0] < end:
                 return False
 
         self.calendar.insert(floor_index, (start, end))
