@@ -68,5 +68,25 @@ class Solution(object):
                         break
 
 
+# 586 / 586 test cases passed.
+# Status: Accepted
+# Runtime: 5212 ms
+# Your runtime beats 42.13 % of python submissions.
+class Solution(object):
+    def numSquares(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        ans = [0]
+        while len(ans) <= n:
+            cnt_perfect_squares = float('inf')
+            cur_length = len(ans)
+            for i in range(1, int(cur_length ** (1.0 / 2)) + 1):
+                cnt_perfect_squares = min(cnt_perfect_squares, ans[cur_length - i * i] + 1)
+            ans += cnt_perfect_squares,
+        return ans[n]
+
+
 if __name__ == '__main__':
-    print(Solution().numSquares(12))
+    print(Solution().numSquares(4))
