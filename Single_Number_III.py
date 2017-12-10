@@ -62,7 +62,7 @@ class Solution(object):
         if not nums:
             return []
         diff = reduce(lambda x, y: x ^ y, nums)
-        diff &= -diff
+        diff &= -diff  # Find the rightmost 1.
 
         ans = [0] * 2
         for num in nums:
