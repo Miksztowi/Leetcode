@@ -34,6 +34,23 @@ class Solution(object):
             res += str(tmp % 10),
         return ('1' if carry else '') + ''.join(res[::-1])
 
+import itertools
+from functools import reduce
+# 315 / 315 test cases passed.
+# Status: Accepted
+# Runtime: 119 ms
+# Your runtime beats 23.28 % of python3 submissions.
+class Solution(object):
+    def addStrings(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        return str(reduce(lambda a, b: a*10 + b,
+                      map(lambda x: ord(x[0]) + ord(x[1]) - ord('0') * 2,
+                          list(itertools.zip_longest(num1[::-1], num2[::-1], fillvalue='0'))[::-1]
+        )))
 
 if __name__ == '__main__':
     print(Solution().addStrings(
