@@ -31,10 +31,11 @@
 # We can't stack the pyramid to the top.
 # Note that there could be allowed triples (A, B, C) and (A, B, D) with C != D.
 
-from collections import defaultdict
-from itertools import product
-
-
+# 32 / 32 test cases passed.
+# Status: Accepted
+# Runtime: 408 ms
+# We model the states that blocks could be in. We can do this using binary: a number like 0b0001011 would correspond to
+# the state of the block being either 'A', 'B' or 'D'.
 class Solution(object):
     def pyramidTransition(self, bottom, allowed):
         """
@@ -42,36 +43,32 @@ class Solution(object):
         :type allowed: List[str]
         :rtype: bool
         """
-        top = len(bottom)
-        hash_map = defaultdict(set)
-        for a in allowed:
-            hash_map[a[:2]].add(a[2])
-        next_bottoms = {bottom}
+        T = [[0] * 7 for _ in range(7)]
+        for tripe in allowed:
+            a, b, c = map(ord, tripe)
+            T[a - ord('A')][b - ord('A')] |= 1 << (c - ord('A'))
 
-        cur_level = top
-        while next_bottoms:
-            temp = []
-            cur_level -= 1
-            if 1 == cur_level:
-                return True
-            for next_bottom in next_bottoms:
-                i = ''
-                for i in range(len(next_bottom) - 1):
-                    if hash_map.get(next_bottom[i] + next_bottom[i + 1]):
-                        i = i + hash_map.get(next_bottom[i] + next_bottom[i + 1])
-                if len(i) >= cur_level:
-                    temp += i,
-            if not temp:
-                return False
-            print(temp)
-            next_bottoms = temp
+        state = [1 << (ord(x) - ord('A')) for x in bottom]
+
+        for loops in bottom[:-1]:
+            for i in range(len(state) - 1):
+                k = 0
+                for b1 in range(7):
+                    if (state[i] >> b1) & 1:
+                        for b2 in range(7):
+                            if (state[i + 1] >> b2) & 1:
+                                k |= T[b1][b2]
+                state[i] = k
+            state.pop()
+        return bool(state[0])
+
 
 
 
 if __name__ == '__main__':
-    print(Solution().pyramidTransition('XXYX', ["XXX", "XXY", "XYX", "XYY", "YXZ"]))
-    print(Solution().pyramidTransition('', []))
-    print(Solution().pyramidTransition('XYZ', ["XYD", "YZE", "DEA", "FFF"]))
+    # print(Solution().pyramidTransition('XXYX', ["XXX", "XXY", "XYX", "XYY", "YXZ"]))
+    # print(Solution().pyramidTransition('', []))
+    # print(Solution().pyramidTransition('XYZ', ["XYD", "YZE", "DEA", "FFF"]))
     print(Solution().pyramidTransition("AABCCBABBB",
                                        ["AAA", "AAB", "BCD", "BCA", "BCB", "BAD", "BAB", "BAA", "CCD", "BDD", "CCA",
                                         "CAA", "CAD", "DAD", "DAA", "DAC", "DCD", "DCB", "DCA", "CDD", "ABA", "ABB",
