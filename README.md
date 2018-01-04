@@ -1,22 +1,20 @@
+
 <p align="center"><img width="300" src="https://raw.githubusercontent.com/Ma63d/leetcode-spider/master/img/site-logo.png"></p>
 <p align="center">
  
-## 简介
+## About
+[简体中文](https://github.com/Miksztowi/Leetcode/blob/master/doc/README_CHINESE.md)
 
-这个项目里，存放的是我用**Python**编写的题目答案。我将所有答案的**运行时间**／**排名比例**都粘贴在了答案的上方，便于你快速浏览与思考这个答案存在的**缺点**／**优点**。当你阅读完代码存在困惑时，可以查看对应的Commit里的提示。
+This project includes some **Leetcode's** solutions and all of them are coded by **Python**.In order to handily compare the efficiency of different solutions, I pasted corresponding **Runtime**/**Runtime Beats**  on top of the code.If you still have confusion after reading code, you can look over the tips in the corresponding commit.
 
+## Usage
+Just use Ctrl+F and search by title.
 
-## 使用说明
+## Contribute
 
-直接用Ctrl + F，通过相应的题目名称去搜索即可。
-
-
-## 最后
-
-* 如果你正在使用不同的编程语言去实现一个类似的答案归档项目，我们可以在彼此的README中挂上连接，来帮助更多的人。
-* 如果你认为我给出的某题答案存在问题，或者是你思考出了不同的解决思路，我非常乐意收到的你反馈 :)
+* If you are doing the same job like me, but with different program languages like Java, Go, C/C++. etc. And you also want to help more leetcoders please contact me to implement it together!
+* Welcome contributions, feedback and plain old complaining. Feel free to open an issue.
 
 Email: binwengan@gmail.com
 
-希望这个项目能帮助你去思考'为什么'。
 
