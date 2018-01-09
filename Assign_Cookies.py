@@ -22,6 +22,11 @@
 # You have 3 cookies and their sizes are big enough to gratify all of the children,
 # You need to output 2.
 
+
+# 21 / 21 test cases passed.
+# Status: Accepted
+# Runtime: 92 ms
+# Your runtime beats 34.21 % of python submissions.
 class Solution(object):
     def findContentChildren(self, g, s):
         """
@@ -29,7 +34,20 @@ class Solution(object):
         :type s: List[int]
         :rtype: int
         """
-        pass
+        number = cookie = factor = 0
+        s.sort()
+        g.sort()
+        while cookie < len(s) and factor < len(g):
+            if s[cookie] >= g[factor]:
+                number += 1
+                cookie += 1
+                factor += 1
+            else:
+                cookie += 1
+        return number
+
 
 if __name__ == '__main__':
-    print(Solution().findContentChildren())
+    print(Solution().findContentChildren([1, 2, 3], [1, 1]))
+    print(Solution().findContentChildren([1, 2, 3], [1, 2]))
+    print(Solution().findContentChildren([], []))
