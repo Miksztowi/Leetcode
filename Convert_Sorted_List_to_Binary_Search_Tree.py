@@ -1,4 +1,4 @@
-x2# -*- encoding:utf-8 -*-
+# -*- encoding:utf-8 -*-
 # __author__=='Gan'
 
 # Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
