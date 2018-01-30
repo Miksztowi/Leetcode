@@ -32,7 +32,7 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        return False if n < 1 else n & (n - 1) == 0  # power of two should only contain only on bit.
+        return False if n < 1 else n & (n - 1) == 0  # power of two should contain only one bit.
 
 
 if __name__ == '__main__':
